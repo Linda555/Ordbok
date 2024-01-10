@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Ögontermer Ordbok</title>
+  <style>
+    /* CSS-stilar för gränssnittet */
+    /* Styla enligt önskemål för att förbättra användarupplevelsen */
+  </style>
+</head>
+<body>
+  <h1>Ögontermer Ordbok</h1>
+  
+  <form id="search-form">
+    <label for="search-input">Sök term:</label>
+    <input type="text" id="search-input" name="search" placeholder="Skriv in termen">
+    <button type="submit">Sök</button>
+  </form>
+
+  <div id="result">
+    <!-- Här visas sökresultatet -->
+  </div>
+
+  <script>
+    // Skapar en lista med ögontermer och deras förklaringar
+    const terms = [
+      { term: 'abducens', definition: 'avledande' },
+      { term: 'abducenspares', definition: 'förlamning av nervus abducens, förmågan vid blick utåt inskränks eller upphävs' },
+      { term: 'abduktion', definition: 'rörelse utåt från mittplanet av kroppen, ögats utåtvridning' },
+      { term: 'abduktionsprisma', definition: 'prismalins som tvingar ögonen till divergens, se även adduktionsprisma' },
+      { term: 'abberation', definition: 'avvikelse från det normala, se kromatisk resp. sfärisk aberration' },
+      { term: 'A-betalipoproteinemi', definition: 'Bassen-Kornzweig syndrome- en recessivt ärftlig rubbning i fettmetabolismen med låg vitamin A-halt i blodet. Mörkerseendet är nedsatt men kan förbättras med tillsatt vitamin A.' },
+      { term: 'ablatio', definition: 'avlossning, avlägsnande' },
+      { term: 'ablefaron', definition: 'avsaknad av ögonlock' },
+      { term: 'abnorm', definition: 'onormal' },
+      { term: 'abrasio', definition: 'skrapning' },
+      { term: 'abscess', definition: 'böld, varhärd' },
+      { term: 'absolut', definition: 'fullständig, helt och hållet' },
+      { term: 'absolut defekt', definition: 'anopsi- oförmåga att se, i synfältssammanhang; ett helt blint område i näthinnan' },
+      { term: 'absolut glaukom', definition: 'tillstånd där ögat blivit blint av glaukom. Kallas också Glaucoma absolutum' },
+      { term: 'absolut pupillstelhet', definition: 'den direkta och indirekta ljusreaktionen är försvagad eller upphävd i kombination med förstorad pupill. Även kallat efferent pupillstelhet' },
+      { term: 'absolut scotom', definition: 'ett helt blint område i näthinnan omgivet av orråden med högre eller normal känslighet' },
+      { term: 'absorbera', definition: 'suga upp, införliva' },
+      { term: 'absorption', definition: 'inom optiken; då strålning passerar genom optiska medier absorberar dessa en del av energin och därigenom försvagas strålningens intensitet' },
+      { term: 'AC', definition: 'AK -förkortning för ackommoditiv convergens' },
+      { term: 'AC/A', definition: 'förhållandet mellan ackommadativ konvergens och ackommodation, anges i optiskt status' },
+      { term: 'Accessorisk', definition: 'sidoordnad, överflödig' },
+      // Lägg till resten av termerna och deras definitioner här
+      // Exempel:
+      // { term: 'ny_term', definition: 'definition' },
+    ];
+
+    const form = document.getElementById('search-form');
+    const resultDiv = document.getElementById('result');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const searchTerm = document.getElementById('search-input').value.toLowerCase();
+      const matchingTerms = terms.filter(item => item.term.toLowerCase().includes(searchTerm));
+      displayResults(matchingTerms);
+    });
+
+    function displayResults(termsList) {
+      if (termsList.length === 0) {
+        resultDiv.innerHTML = 'Inga resultat hittades.';
+      } else {
+        let output = '<ul>';
+        termsList.forEach(item => {
+          output += `<li><strong>${item.term}</strong>: ${item.definition}</li>`;
+        });
+        output += '</ul>';
+        resultDiv.innerHTML = output;
+      }
+    }
+  </script>
+</body>
+</html>
